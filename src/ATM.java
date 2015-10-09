@@ -17,10 +17,21 @@ public class ATM {
                 throw new Exception("Name Invalid");
 
             if (!accounts.containsKey(name)) {
-                accounts.put("name ", 100.0);
+                System.out.println("Account not found");
+                System.out.println("Would you like to create an account? [y][n]");
+                String selection = scanner.nextLine();
+                if (selection.equals("y")) {
+                    accounts.put(name, 100.0);
+                } else if (selection.equals("n")) {
+                    System.out.println("Account not created, thank you.");
+                    System.exit(0);
+                }
+
             }
 
             System.out.println("Welcome," + name);
+
+            double balance = accounts.get(name);
 
             System.out.println("What would you like to do," + name);
             System.out.println("[1.] Check my balance");
@@ -28,16 +39,17 @@ public class ATM {
             System.out.println("[3.] Cancel");
             System.out.println("[4.] Remove your bank account");
 
-            double balance = accounts.get(name);
 
             String task = scanner.nextLine();
             int taskNum = Integer.valueOf(task);
             if (taskNum == 1) {
-                System.out.println("Balance");
+                System.out.println(balance);
             } else if (taskNum == 2) {
-                System.out.println("How much would you like to withdraw?");
+                System.out.println("Withdraw How Much?");
                 String withdraw = scanner.nextLine();
                 int withdrawNum = Integer.valueOf(withdraw);
+                accounts.replace(name, balance, balance - (double) withdrawNum);
+
                 if (withdrawNum > balance)
                     throw new Exception("Over your Limit");
                 else
@@ -48,8 +60,6 @@ public class ATM {
             } else {
                 throw new Exception("Select a Task");
             }
-
         }
     }
-
 }
