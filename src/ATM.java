@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Created by BennettIronYard on 10/8/15.
  */
 public class ATM {
-    public static void run()
+    public static void main(String [] args)
             throws Exception {
         HashMap<String, Double> accounts = new HashMap();
         while (true) {
@@ -18,7 +18,7 @@ public class ATM {
 
             if (!accounts.containsKey(name)) {
                 System.out.println("Account not found");
-                System.out.println("Would you like to create an account? [y][n]");
+                System.out.println("Would you like to create an account? [y] Yes[n] No");
                 String selection = scanner.nextLine();
                 if (selection.equals("y")) {
                     accounts.put(name, 100.0);
