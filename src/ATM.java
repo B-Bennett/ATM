@@ -18,7 +18,7 @@ public class ATM {
 
             if (!accounts.containsKey(name)) {
                 System.out.println("Account not found");
-                System.out.println("Would you like to create an account? [y] Yes[n] No");
+                System.out.println("Would you like to create an account? [y]Yes [n]No");
                 String selection = scanner.nextLine();
                 if (selection.equals("y")) {
                     accounts.put(name, 100.0);
